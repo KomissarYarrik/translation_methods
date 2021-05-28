@@ -1,28 +1,56 @@
 #include "List.h"
 
-List::List(vector<string> listId)
+PNode CreateNode(string newid)
 {
+	PNode NewNode = new Node;
+	NewNode->id = newid;
+	NewNode->next = NULL;
+	return NewNode;
 }
 
-void List::addEnd(string newId)
+void AddFirst(PNode& Head, PNode NewNode)
 {
+	NewNode->next = Head;
+	Head = NewNode;
 }
 
-string List::find(string fId)
+void AddAfter(PNode p, PNode NewNode)
 {
-	return string();
+	NewNode->next = p->next;
+	p->next = NewNode;
 }
 
-string List::find(int numId)
+void AddLast(PNode& Head, PNode NewNode)
 {
-	return string();
+	PNode q = Head;
+	if (Head == NULL) {
+		AddFirst(Head, NewNode);
+		return;
+	}
+	while (q->next) q = q->next;
+	AddAfter(q, NewNode);
 }
 
-void List::delElement(string dId)
-{
-}
 
-vector<string> List::outList()
+
+/*void AddAfter(PNode head, PNode NewNode)
 {
-	return vector<string>();
-}
+	while (head->next != NULL)
+	{
+		head = head->next;
+	}
+	head->next = NewNode;
+}*/
+
+/*void CreateList(vector<string> ids)
+{
+	PNode head;
+	head->id = ids[0];
+	head->next = NULL;
+
+	for (int i = 1; i < ids.size(); i++) 
+	{
+		AddAfter(head, CreateNode(ids[i]));
+	}
+	return head
+}*/
