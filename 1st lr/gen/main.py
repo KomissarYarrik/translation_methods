@@ -14,7 +14,7 @@ def generate_random_ident(length, file):
     idts.append(rand_ident)
     file.write(rand_ident + '\n')
 
-file = open('identification list'+'.txt', 'w')
+file = open('identificationlist'+'.txt', 'w')
 for i in range(n):
     generate_random_ident(len_ident, file)
 file.close()

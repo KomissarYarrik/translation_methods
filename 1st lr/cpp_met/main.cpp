@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include <algorithm>
 #include <fstream> 
 #include "List.h"
@@ -22,17 +23,34 @@ vector<string> readFileId()
     {
         file >> temp;
         listId.push_back(temp);
-        cout << temp << endl;
+        //cout << temp << endl;
     }     
     return listId;
 }
+
 
 void main()
 {
     setlocale(LC_ALL, "rus");
 
-    auto list = readFileId();
-    sort(list.begin(), list.end());
+    auto vlist = readFileId();
+    sort(vlist.begin(), vlist.end());
+    /*for (int i = 0; i < vlist.size(); i++)
+    {
+        cout << vlist[i];
+    }*/
+
+    clock_t start_time = clock();
+    PNode list = CreateList(vlist);
+    OutList(list);
+    clock_t end_time = clock();
+    double search_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+    cout << "Время заполнения списка :" << search_time << endl;
+
+    for (int i = 0; i < vlist.size(); i++)
+    {
+
+    }
 
 	return;
 }

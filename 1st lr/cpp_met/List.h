@@ -12,7 +12,6 @@ struct Node
 };
 
 typedef Node* PNode;
-PNode Head = NULL;
 
 PNode CreateNode(string newid);
 
@@ -20,9 +19,11 @@ void AddFirst(PNode& Head, PNode NewNode);
 
 void AddAfter(PNode p, PNode NewNode);
 
-void CreateList(vector<string> ids);
+PNode CreateList(vector<string> ids);
 
 void AddLast(PNode& Head, PNode NewNode);
+
+void OutList(PNode Head);
 
 /*void addEndList(string newId);
 string FindList(string fId);

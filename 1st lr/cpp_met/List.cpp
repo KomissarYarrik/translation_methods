@@ -20,6 +20,16 @@ void AddAfter(PNode p, PNode NewNode)
 	p->next = NewNode;
 }
 
+PNode CreateList(vector<string> ids)
+{
+	PNode Head = NULL;
+	for (int i = 0; i < ids.size(); i++)
+	{
+		AddLast(Head, CreateNode(ids[i]));
+	}
+	return Head;
+}
+
 void AddLast(PNode& Head, PNode NewNode)
 {
 	PNode q = Head;
@@ -29,6 +39,15 @@ void AddLast(PNode& Head, PNode NewNode)
 	}
 	while (q->next) q = q->next;
 	AddAfter(q, NewNode);
+}
+
+void OutList(PNode Head)
+{
+	if (Head == NULL) {
+		return;
+	}
+	cout << Head->id << endl;
+	OutList(Head->next);
 }
 
 
