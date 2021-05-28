@@ -1,11 +1,37 @@
 #include <iostream>
+#include <algorithm>
+#include <fstream> 
 #include "List.h"
 
 using namespace std;
 
+vector<string> readFileId()
+{
+    vector<string> listId;
+    string temp;
+    ifstream file; 
+    file.open("identificationlist.txt"); 
+    if (!file)
+    {
+        cout << "‘айл не открыт\n\n";
+        return listId;
+    }
+    // —читка слов из файла
+    while(!file.eof())
+    {
+        file >> temp;
+        listId.push_back(temp);
+        cout << temp << endl;
+    }     
+    return listId;
+}
+
 void main()
 {
-	cout << "Hello world!" << endl;
+    setlocale(LC_ALL, "rus");
+
+    auto list = readFileId();
+    sort(list.begin(), list.end());
 
 	return;
 }

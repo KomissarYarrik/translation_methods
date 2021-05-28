@@ -1,22 +1,34 @@
 #pragma once
+#include <sstream>
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
 
 using namespace std;
 
+struct Tree
+{
+	string id;
+	Tree *left;
+	Tree* right;
+};
+
+typedef Tree* PTree;
+
 class BinTree
 {
 public:
 	BinTree(vector<string> listId);
-	void addElem(string newId);
-	string find(string fId);
-	void delElement(string dId);
+	PTree createNode(string s);
+	void addElem(PTree head, string newId);
+	bool find(PTree head, string fId);
 
-	vector<string> outList();
+	void outTree(PTree head, int i = 0);
+	void helpBalance(int left, int right);
 
 private:
-	string id;
-	unique_ptr<BinTree> next;
+	PTree _head;
+	int _size;
+	vector<int> _idx;
 };
-
