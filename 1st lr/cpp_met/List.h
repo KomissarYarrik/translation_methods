@@ -5,19 +5,28 @@
 
 using namespace std;
 
-class List
+struct Node
 {
-public:
-	List(vector<string> listId);
-	void addEnd(string newId);
-	string find(string fId);
-	string find(int numId);
-	void delElement(string dId);
-
-	vector<string> outList();
-
-private:
 	string id;
-	unique_ptr<List> next;
+	Node *next;
 };
 
+typedef Node* PNode;
+PNode Head = NULL;
+
+PNode CreateNode(string newid);
+
+void AddFirst(PNode& Head, PNode NewNode);
+
+void AddAfter(PNode p, PNode NewNode);
+
+void CreateList(vector<string> ids);
+
+void AddLast(PNode& Head, PNode NewNode);
+
+/*void addEndList(string newId);
+string FindList(string fId);
+string FindList(int numId);
+void delElementList(string dId);
+
+vector<string> outList();*/
