@@ -27,8 +27,9 @@ public:
 	void outTree(PTree head, int i = 0);
 	void helpBalance(int left, int right);
 
-private:
 	PTree _head;
+
+    private:
 	int _size;
 	vector<int> _idx;
 };

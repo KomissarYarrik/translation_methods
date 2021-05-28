@@ -12,7 +12,7 @@ struct Node
 };
 
 typedef Node* PNode;
-PNode Head = NULL;
+//PNode Head = NULL;
 
 PNode CreateNode(string newid);
 
