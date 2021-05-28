@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream> 
 #include "List.h"
+#include "BinTree.h"
 
 using namespace std;
 
