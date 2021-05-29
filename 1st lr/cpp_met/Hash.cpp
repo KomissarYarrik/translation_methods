@@ -1,80 +1,50 @@
 #include "Hash.h"
 
-#pragma once
-#include <iostream>
-#include <string>
-#include <list>
-#include <algorithm>
-
-Identifier::Identifier(const std::string& name) :
-    m_name(name)
+HashTable::HashTable(vector<string> vs)
 {
+	size = vs.size();
+	for (int k = 0; k < size; k++) htable.push_back(NULL);
+
+	for (int i = 0; i < size; i++)
+	{
+		auto idx = hash(vs[i]);
+		if (htable[idx] == NULL)
+		{
+			htable[idx] = CreateHead(vs[i]);
+		}
+		else
+		{
+			AddLast(htable[idx], CreateNode(vs[i]));
+		}
+	}
 }
 
-std::string Identifier::name() const
+int HashTable::hash(string id)
 {
-    return m_name;
+	long long key = 0;
+	for (int i = 0; i < id.size(); i++)
+	{
+		key += (int)id[i]*((long long)i+1);
+	}
+	//cout << key % (size - 1) << endl;
+	return key % (size - 1);
 }
 
-bool operator==(const Identifier& left, const Identifier& right)
+bool HashTable::find(string id)
 {
-    return left.name() == right.name();
+	auto idx = hash(id);
+	return FindList(htable[idx],id);
 }
 
-size_t hash(const Identifier& id)
+void HashTable::outHashTable()
 {
-    // Если имя переменной составляет один символ - возвращается его код,
-    // умноженный на два
-    if (id.name().length() == 1)
-        return 2 * size_t(id.name()[0]);
-
-    // Иначе возвращается сумма кодов первых двух символов
-    return size_t(id.name()[0]) + size_t(id.name()[1]);
-}
-
-IDNotFoundException::IDNotFoundException(const std::string id_name) :
-    m_what(std::string("Identifier \'") + id_name + "\' not found!")
-{
-}
-
-IDNotFoundException::~IDNotFoundException() throw()
-{
-}
-
-
-const char* IDNotFoundException::what() const throw()
-{
-    return m_what.c_str();
-}
-
-
-
-
-// Добавление идентификатора в хэш-таблицу
-void HashTable::add(const Identifier& id)
-{
-    // Добавление идентификатора в список, расположенный в таблице по
-    // индексу, вычисленному хэш-функцией (с учётом смещения)
-    m_hash_table[hash(id) - min_hash_value].push_back(id);
-}
-
-// Поиск идентификатора в таблице по имени
-Identifier& HashTable::get(const std::string& id_name)
-{
-    // Сохраняется ссылка на список, в котором потенциально будет
-    // расположен идентификатор (для простоты)
-    std::list<Identifier>& line = m_hash_table[hash(id_name) - min_hash_value];
-
-    // Поиск идентификаторы в списке по имени
-    std::list<Identifier>::iterator it =
-        std::find(line.begin(), line.end(), id_name);
-
-    // Если при поиске были просмотренны все элементы списка,и ни один не
-    // подошёл - сообщаем о том, что идентификатор не найден, посредством
-    // исключения
-    if (it == line.end())
-        throw IDNotFoundException(id_name);
-
-    // Если идентификатор найден - возвращаем ссылку на него
-    return *it;
+	for (int i = 0; i < size; i++)
+	{
+		if (htable[i] != NULL)
+		{
+			cout << "hash = " << i << endl;
+			OutList(htable[i]);
+			cout << "----------------------" << endl;
+		}
+	}
 }

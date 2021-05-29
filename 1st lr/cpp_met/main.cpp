@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <fstream> 
+
 #include "List.h"
 #include "BinTree.h"
 #include "Hash.h"
@@ -27,7 +28,6 @@ vector<string> readFileId()
     }     
     return listId;
 }
-void createHash(vector<string> vs);
 
 void main()
 {
@@ -37,39 +37,10 @@ void main()
     sort(list.begin(), list.end());
 
     BinTree* tree = new BinTree(list);
-    tree->outTree(tree->_head);
-    createHash(list);
+    //tree->outTree(tree->_head);
+    HashTable* hash = new HashTable(list);
+    hash->outHashTable();
+
 	return;
 }
 
-void createHash(vector<string> vs)
-{
-    // Создаём хэш-таблицу
-    HashTable ht;
-
-    // Добавляем в неё различные идентификаторы
-    for (int i = 0; i < vs.size(); i++) {
-      //  ht.add(Identifier(vs[i]));
-    }
-    ht.add(Identifier("a"));
-    ht.add(Identifier("aa"));
-    ht.add(Identifier("if"));
-    ht.add(Identifier("fi"));
-    // На случай, если идентификатор не будет найден, заворачиваем код поиска
-    // идентификаторов в блок try/catch
-    try
-    {
-        // Выводим на экран информацию о различных идентификаторах
-        std::cout << ht.get(vs[2]).name() << std::endl;
-        std::cout << ht.get(vs[4]).name() << std::endl;
-        std::cout << ht.get(vs[10]).name() << std::endl;
-        std::cout << ht.get("fi").name() << std::endl;
-        // Проверяем случай, когда идентификатор не должен быть найден
-        std::cout << ht.get("hello").name() << std::endl;
-    }
-    catch (const IDNotFoundException& ex)
-    {
-        // Если идентификатор не найден - сообщаем об этом
-        std::cerr << ex.what() << std::endl;
-    }
-}
