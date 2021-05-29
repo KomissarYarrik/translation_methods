@@ -43,12 +43,12 @@ void main()
 
     clock_t start_time = clock();
     PNode list = CreateList(vlist);
-    OutList(list);
+    //OutList(list);
     clock_t end_time = clock();
     double search_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
     cout << "Время заполнения списка: " << search_time << endl;
 
-    //Леша, шайтан-программа ругается на этот кусок. Я не понимаю, почему
+    //перемешивание исходного набора
     vector<int> PseudoRandomMixingVect;
     bool alreadyHere;
     for (int i = 0; i < vlist.size(); )
@@ -65,7 +65,7 @@ void main()
         }
         if (!alreadyHere)
         {
-            PseudoRandomMixingVect[i] = NewRandomValue;
+            PseudoRandomMixingVect.push_back(NewRandomValue);
             i++;
         }
     }
