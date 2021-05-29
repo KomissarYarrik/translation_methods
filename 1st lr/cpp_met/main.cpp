@@ -2,6 +2,7 @@
 #include <ctime>
 #include <algorithm>
 #include <fstream> 
+#include <vector>
 #include "List.h"
 #include "BinTree.h"
 
@@ -45,11 +46,28 @@ void main()
     OutList(list);
     clock_t end_time = clock();
     double search_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << "Время заполнения списка :" << search_time << endl;
+    cout << "Время заполнения списка: " << search_time << endl;
 
-    for (int i = 0; i < vlist.size(); i++)
+    //Леша, шайтан-программа ругается на этот кусок. Я не понимаю, почему
+    vector<int> PseudoRandomMixingVect;
+    bool alreadyHere;
+    for (int i = 0; i < vlist.size(); )
     {
-
+        alreadyHere = false;
+        int NewRandomValue = rand() % vlist.size();
+        for (int j = 0; j < i; j++)
+        {
+            if (PseudoRandomMixingVect[j] == NewRandomValue)
+            {
+                alreadyHere = true;
+                break;
+            }
+        }
+        if (!alreadyHere)
+        {
+            PseudoRandomMixingVect[i] = NewRandomValue;
+            i++;
+        }
     }
 
 	return;
