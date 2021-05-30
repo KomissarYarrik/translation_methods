@@ -64,5 +64,5 @@ void HashTable::outUseMemory()
 	}
 
 	cout << "Memory HashTable:" << endl;
-	cout << "Pointers + vector = " << 8 * 8 * count  + sizeof  htable << " bit\n" << endl;
+	cout << "Pointers + vector = " <<  8 * count  + sizeof  htable << " byte\n" << endl;
 }

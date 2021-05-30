@@ -7,6 +7,7 @@ BinTree::BinTree(vector<string> listId):
 	if (_size == 0) {
 		return;
 	}
+	sort(listId.begin(), listId.end());
 	helpBalance(0, _size - 1);
 	_head->id = listId[_idx[0]];
 	_head->left = nullptr;
@@ -119,6 +120,6 @@ void BinTree::helpBalance(int left, int right)
 void BinTree::outUseMemory()
 {
 	cout << "Memory BinTree:" << endl;
-	cout << "Pointers = " << 8 * 8 * _size * 2 << " bit" << endl;
-	cout << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int)) * 8 << " bit\n" << endl;
+	cout << "Pointers = " << 8 *  _size * 2 << " byte" << endl;
+	cout << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int))  << " byte\n" << endl;
 }

@@ -76,7 +76,7 @@ void outUseMemory(PNode Head)
 		Head = Head->next;
 	}
 	cout << "Memory Node:" << endl;
-	cout << "Pointers = " << 8 * 8 * count << " bit\n" << endl;
+	cout << "Pointers = " << 8 * count << " byte\n" << endl;
 }
 
 /*void AddAfter(PNode head, PNode NewNode)
