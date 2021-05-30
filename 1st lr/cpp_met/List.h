@@ -9,11 +9,10 @@ using namespace std;
 struct Node
 {
 	string id;
-	Node *next;
+	Node* next;
 };
 
 typedef Node* PNode;
-PNode Head = NULL;
 
 PNode CreateNode(string newid);
 
@@ -21,7 +20,9 @@ void AddFirst(PNode& Head, PNode NewNode);
 
 void AddAfter(PNode p, PNode NewNode);
 
-void CreateList(vector<string> ids);
+PNode CreateList(vector<string> ids);
+
+PNode CreateHead(string ids);
 
 void AddLast(PNode& Head, PNode NewNode);
 

@@ -2,6 +2,8 @@
 #include <ctime>
 #include <fstream> 
 #include "List.h"
+#include "BinTree.h"
+#include "Hash.h"
 
 using namespace std;
 
@@ -16,11 +18,12 @@ vector<string> readFileId()
         cout << "File not open!\n\n";
         return listId;
     }
+    // —читка слов из файла
     while(!file.eof())
     {
         file >> temp;
         listId.push_back(temp);
-        cout << temp << endl;
+        //cout << temp << endl;
     }     
    // cout << "Data = " << (sizeof listId + listId.capacity() * sizeof(char)*listId[0].size())  << "byte\n" <<endl;
     file.close();

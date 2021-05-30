@@ -20,6 +20,23 @@ void AddAfter(PNode p, PNode NewNode)
 	p->next = NewNode;
 }
 
+PNode CreateList(vector<string> ids)
+{
+	PNode Head = NULL;
+	for (int i = 0; i < ids.size(); i++)
+	{
+		AddLast(Head, CreateNode(ids[i]));
+	}
+	return Head;
+}
+
+PNode CreateHead(string s)
+{
+	PNode Head = NULL;
+	AddLast(Head, CreateNode(s));
+	return Head;
+}
+
 void AddLast(PNode& Head, PNode NewNode)
 {
 	PNode q = Head;
@@ -30,7 +47,6 @@ void AddLast(PNode& Head, PNode NewNode)
 	while (q->next) q = q->next;
 	AddAfter(q, NewNode);
 }
-
 
 void OutList(PNode Head)
 {
@@ -81,7 +97,7 @@ void outUseMemory(PNode Head, ofstream& file)
 	head->id = ids[0];
 	head->next = NULL;
 
-	for (int i = 1; i < ids.size(); i++) 
+	for (int i = 1; i < ids.size(); i++)
 	{
 		AddAfter(head, CreateNode(ids[i]));
 	}

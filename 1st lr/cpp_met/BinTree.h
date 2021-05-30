@@ -30,8 +30,9 @@ public:
 	void helpBalance(int left, int right);
 	void outUseMemory(ofstream& file);
 
-private:
 	PTree _head;
+
+    private:
 	int _size;
 	vector<int> _idx;
 };

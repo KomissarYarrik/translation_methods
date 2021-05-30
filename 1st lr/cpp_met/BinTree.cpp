@@ -87,6 +87,7 @@ bool BinTree::find(PTree head, string findId)
 
 void BinTree::outTree(PTree p, int indent)
 {	
+
 	if (p != NULL) {
 		if (p->right) {
 			outTree(p->right, indent + 4);
@@ -95,13 +96,15 @@ void BinTree::outTree(PTree p, int indent)
 			std::cout << std::setw(indent) << ' ';
 		}
 		if (p->right) std::cout << " /\n" << std::setw(indent) << ' ';
-		std::cout << p->id << "\n ";
+		std::cout <<int( p->id[0] )<< "\n ";
 		if (p->left) {
 			std::cout << std::setw(indent) << ' ' << " \\\n";
 			outTree(p->left, indent + 4);
 		}
 	}
 }
+
+
 
 void BinTree::helpBalance(int left, int right)
 {
