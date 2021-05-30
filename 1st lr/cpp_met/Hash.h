@@ -13,6 +13,7 @@ public:
 	int hash(string id);
 	bool find(string id);
 	void outHashTable();
+	void outUseMemory();
 
 private:
 	vector<PNode> htable;

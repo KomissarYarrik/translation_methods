@@ -48,3 +48,21 @@ void HashTable::outHashTable()
 		}
 	}
 }
+
+void HashTable::outUseMemory()
+{
+	int count = 0;
+	for (int i = 0; i < size; i++) 
+	{
+		PNode temp = htable[i];
+		count++;
+		while (temp != NULL)
+		{
+			count++;
+			temp = temp->next;
+		}
+	}
+
+	cout << "Memory HashTable:" << endl;
+	cout << "Pointers + vector = " << 8 * 8 * count  + sizeof  htable << " bit\n" << endl;
+}

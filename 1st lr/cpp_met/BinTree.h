@@ -26,6 +26,7 @@ public:
 
 	void outTree(PTree head, int i = 0);
 	void helpBalance(int left, int right);
+	void outUseMemory();
 
 	PTree _head;
 

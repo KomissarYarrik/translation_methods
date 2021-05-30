@@ -29,6 +29,8 @@ void OutList(PNode Head);
 
 bool FindList(PNode Head, string ids);
 
+void outUseMemory(PNode Head);
+
 /*void addEndList(string newId);
 string FindList(string fId);
 string FindList(int numId);

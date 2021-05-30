@@ -26,6 +26,7 @@ vector<string> readFileId()
         listId.push_back(temp);
         //cout << temp << endl;
     }     
+    cout << "Data = " << (sizeof listId + listId.capacity() * sizeof(char)*listId[0].size()) * 8 << " bit\n" <<endl;
     return listId;
 }
 
@@ -33,13 +34,22 @@ void main()
 {
     setlocale(LC_ALL, "rus");
 
-    auto list = readFileId();
-    sort(list.begin(), list.end());
+    auto vlist = readFileId();
+    sort(vlist.begin(), vlist.end());
 
-    BinTree* tree = new BinTree(list);
+    //LIST//
+    PNode list = CreateList(vlist);
+    outUseMemory(list);
+
+    //TREE//
+    BinTree* tree = new BinTree(vlist);
     //tree->outTree(tree->_head);
-    HashTable* hash = new HashTable(list);
-    hash->outHashTable();
+    tree->outUseMemory();
+
+    //HASH
+    HashTable* hash = new HashTable(vlist);
+   // hash->outHashTable();
+    hash->outUseMemory();
 
 	return;
 }

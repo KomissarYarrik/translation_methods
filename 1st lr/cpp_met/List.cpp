@@ -67,7 +67,17 @@ bool FindList(PNode Head, string ids)
 	return false;
 }
 
-
+void outUseMemory(PNode Head)
+{
+	int count = 1;
+	while (Head != NULL)
+	{
+		count++;
+		Head = Head->next;
+	}
+	cout << "Memory Node:" << endl;
+	cout << "Pointers = " << 8 * 8 * count << " bit\n" << endl;
+}
 
 /*void AddAfter(PNode head, PNode NewNode)
 {
