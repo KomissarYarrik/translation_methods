@@ -19,18 +19,16 @@ typedef Tree* PTree;
 class BinTree
 {
 public:
-	PTree _head;
-
 	BinTree(vector<string> listId);
 	PTree createNode(string s);
 	void addElem(PTree head, string newId);
 	bool find(PTree head, string fId);
+
+	void outTree(PTree head, int i = 0);
 	void helpBalance(int left, int right);
 
-	void outUseMemory();
-	void outTree(PTree head, int i = 0);
-
- private:	
+private:
+	PTree _head;
 	int _size;
 	vector<int> _idx;
 };

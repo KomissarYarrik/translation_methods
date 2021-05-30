@@ -20,23 +20,6 @@ void AddAfter(PNode p, PNode NewNode)
 	p->next = NewNode;
 }
 
-PNode CreateList(vector<string> ids)
-{
-	PNode Head = NULL;
-	for (int i = 0; i < ids.size(); i++)
-	{
-		AddLast(Head, CreateNode(ids[i]));
-	}
-	return Head;
-}
-
-PNode CreateHead(string s)
-{
-	PNode Head = NULL;
-	AddLast(Head, CreateNode(s));
-	return Head;
-}
-
 void AddLast(PNode& Head, PNode NewNode)
 {
 	PNode q = Head;
@@ -46,25 +29,6 @@ void AddLast(PNode& Head, PNode NewNode)
 	}
 	while (q->next) q = q->next;
 	AddAfter(q, NewNode);
-}
-
-void OutList(PNode Head)
-{
-	if (Head == NULL) {
-		return;
-	}
-	cout << Head->id << endl;
-	OutList(Head->next);
-}
-
-bool FindList(PNode Head, string ids)
-{
-	while (Head != NULL)
-	{
-		if (Head->id == ids) return true;
-		Head = Head->next;
-	}
-	return false;
 }
 
 
@@ -84,7 +48,7 @@ bool FindList(PNode Head, string ids)
 	head->id = ids[0];
 	head->next = NULL;
 
-	for (int i = 1; i < ids.size(); i++)
+	for (int i = 1; i < ids.size(); i++) 
 	{
 		AddAfter(head, CreateNode(ids[i]));
 	}

@@ -8,10 +8,11 @@ using namespace std;
 struct Node
 {
 	string id;
-	Node* next;
+	Node *next;
 };
 
 typedef Node* PNode;
+PNode Head = NULL;
 
 PNode CreateNode(string newid);
 
@@ -19,15 +20,9 @@ void AddFirst(PNode& Head, PNode NewNode);
 
 void AddAfter(PNode p, PNode NewNode);
 
-PNode CreateList(vector<string> ids);
-
-PNode CreateHead(string ids);
+void CreateList(vector<string> ids);
 
 void AddLast(PNode& Head, PNode NewNode);
-
-void OutList(PNode Head);
-
-bool FindList(PNode Head, string ids);
 
 /*void addEndList(string newId);
 string FindList(string fId);

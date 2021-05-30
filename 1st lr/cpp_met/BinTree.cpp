@@ -86,7 +86,6 @@ bool BinTree::find(PTree head, string findId)
 
 void BinTree::outTree(PTree p, int indent)
 {	
-
 	if (p != NULL) {
 		if (p->right) {
 			outTree(p->right, indent + 4);
@@ -95,15 +94,13 @@ void BinTree::outTree(PTree p, int indent)
 			std::cout << std::setw(indent) << ' ';
 		}
 		if (p->right) std::cout << " /\n" << std::setw(indent) << ' ';
-		std::cout <<int( p->id[0] )<< "\n ";
+		std::cout << p->id << "\n ";
 		if (p->left) {
 			std::cout << std::setw(indent) << ' ' << " \\\n";
 			outTree(p->left, indent + 4);
 		}
 	}
 }
-
-
 
 void BinTree::helpBalance(int left, int right)
 {
@@ -114,11 +111,4 @@ void BinTree::helpBalance(int left, int right)
 	_idx.push_back(i);
 	helpBalance(i + 1, right);
 	helpBalance(left, i - 1);
-}
-
-void BinTree::outUseMemory()
-{
-	cout << "Количество памяти для бинарного дерева:" << endl;
-	cout << "Указатели = " << 64 * _size * 2 << "бит(а)" << endl;
-	cout << "Доп-но для создания сбалансированного дерева = " << sizeof _idx + _idx.capacity() * sizeof _idx[0] << "бит(а)" << endl;
 }
