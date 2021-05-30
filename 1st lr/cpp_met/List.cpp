@@ -32,6 +32,39 @@ void AddLast(PNode& Head, PNode NewNode)
 }
 
 
+void OutList(PNode Head)
+{
+	if (Head == NULL) {
+		return;
+	}
+	cout << Head->id << endl;
+	OutList(Head->next);
+}
+
+bool FindList(PNode Head, string ids)
+{
+	while (Head != NULL)
+	{
+		if (Head->id == ids) return true;
+		Head = Head->next;
+	}
+	return false;
+}
+
+void outUseMemory(PNode Head, ofstream& file)
+{
+	int count = 1;
+	while (Head != NULL)
+	{
+		count++;
+		Head = Head->next;
+	}
+	//cout << "Memory Node:" << endl;
+	//cout << "Pointers = " << 8 * count << " byte\n" << endl;
+
+	file << "Memory Node:" << endl;
+	file << "Pointers = " << 8 * count << " byte\n" << endl;
+}
 
 /*void AddAfter(PNode head, PNode NewNode)
 {

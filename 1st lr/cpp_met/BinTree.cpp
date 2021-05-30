@@ -1,4 +1,4 @@
-#include "BinTree.h"
+﻿#include "BinTree.h"
 
 BinTree::BinTree(vector<string> listId):
 	_head(new Tree)
@@ -7,6 +7,7 @@ BinTree::BinTree(vector<string> listId):
 	if (_size == 0) {
 		return;
 	}
+	sort(listId.begin(), listId.end());
 	helpBalance(0, _size - 1);
 	_head->id = listId[_idx[0]];
 	_head->left = nullptr;
@@ -111,4 +112,15 @@ void BinTree::helpBalance(int left, int right)
 	_idx.push_back(i);
 	helpBalance(i + 1, right);
 	helpBalance(left, i - 1);
+}
+
+void BinTree::outUseMemory(ofstream& file)
+{
+	//cout << "Memory BinTree:" << endl;
+	//cout << "Pointers = " << 8 *  _size * 2 << " byte" << endl;
+	//cout << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int))  << " byte\n" << endl;
+
+	file << "Memory BinTree:" << endl;
+	file << "Pointers = " << 8 * _size * 2 << " byte" << endl;
+	file << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int)) << " byte\n" << endl;
 }

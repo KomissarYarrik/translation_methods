@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream> 
 
 using namespace std;
 
@@ -23,6 +24,12 @@ void AddAfter(PNode p, PNode NewNode);
 void CreateList(vector<string> ids);
 
 void AddLast(PNode& Head, PNode NewNode);
+
+void OutList(PNode Head);
+
+bool FindList(PNode Head, string ids);
+
+void outUseMemory(PNode Head, ofstream& file);
 
 /*void addEndList(string newId);
 string FindList(string fId);

@@ -1,8 +1,10 @@
 #pragma once
 #include <sstream>
 #include <iostream>
+#include <algorithm>
 #include <iomanip>
 #include <string>
+#include <fstream> 
 #include <vector>
 
 using namespace std;
@@ -26,6 +28,7 @@ public:
 
 	void outTree(PTree head, int i = 0);
 	void helpBalance(int left, int right);
+	void outUseMemory(ofstream& file);
 
 private:
 	PTree _head;
