@@ -15,6 +15,6 @@ public:
 	void outHashTable();
 
 private:
-	vector<PNode> htable;
-	int size;
+	vector<PNode> _htable;
+	int _size;
 };

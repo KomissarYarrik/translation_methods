@@ -115,3 +115,10 @@ void BinTree::helpBalance(int left, int right)
 	helpBalance(i + 1, right);
 	helpBalance(left, i - 1);
 }
+
+void BinTree::outUseMemory()
+{
+	cout << "Количество памяти для бинарного дерева:" << endl;
+	cout << "Указатели = " << 64 * _size * 2 << "бит(а)" << endl;
+	cout << "Доп-но для создания сбалансированного дерева = " << sizeof _idx + _idx.capacity() * sizeof _idx[0] << "бит(а)" << endl;
+}

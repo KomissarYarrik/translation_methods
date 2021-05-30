@@ -2,19 +2,19 @@
 
 HashTable::HashTable(vector<string> vs)
 {
-	size = vs.size();
-	for (int k = 0; k < size; k++) htable.push_back(NULL);
+	_size = vs.size();
+	for (int k = 0; k < _size; k++) _htable.push_back(NULL);
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < _size; i++)
 	{
 		auto idx = hash(vs[i]);
-		if (htable[idx] == NULL)
+		if (_htable[idx] == NULL)
 		{
-			htable[idx] = CreateHead(vs[i]);
+			_htable[idx] = CreateHead(vs[i]);
 		}
 		else
 		{
-			AddLast(htable[idx], CreateNode(vs[i]));
+			AddLast(_htable[idx], CreateNode(vs[i]));
 		}
 	}
 }
@@ -27,23 +27,23 @@ int HashTable::hash(string id)
 		key += (int)id[i]*((long long)i+1);
 	}
 	//cout << key % (size - 1) << endl;
-	return key % (size - 1);
+	return key % (_size - 1);
 }
 
 bool HashTable::find(string id)
 {
 	auto idx = hash(id);
-	return FindList(htable[idx],id);
+	return FindList(_htable[idx],id);
 }
 
 void HashTable::outHashTable()
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < _size; i++)
 	{
-		if (htable[i] != NULL)
+		if (_htable[i] != NULL)
 		{
 			cout << "hash = " << i << endl;
-			OutList(htable[i]);
+			OutList(_htable[i]);
 			cout << "----------------------" << endl;
 		}
 	}
