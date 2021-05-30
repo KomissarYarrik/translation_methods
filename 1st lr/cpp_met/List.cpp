@@ -67,7 +67,7 @@ bool FindList(PNode Head, string ids)
 	return false;
 }
 
-void outUseMemory(PNode Head)
+void outUseMemory(PNode Head, ofstream& file)
 {
 	int count = 1;
 	while (Head != NULL)
@@ -75,8 +75,11 @@ void outUseMemory(PNode Head)
 		count++;
 		Head = Head->next;
 	}
-	cout << "Memory Node:" << endl;
-	cout << "Pointers = " << 8 * count << " byte\n" << endl;
+	//cout << "Memory Node:" << endl;
+	//cout << "Pointers = " << 8 * count << " byte\n" << endl;
+
+	file << "Memory Node:" << endl;
+	file << "Pointers = " << 8 * count << " byte\n" << endl;
 }
 
 /*void AddAfter(PNode head, PNode NewNode)

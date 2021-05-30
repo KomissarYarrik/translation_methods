@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream> 
 
 using namespace std;
 
@@ -29,7 +30,7 @@ void OutList(PNode Head);
 
 bool FindList(PNode Head, string ids);
 
-void outUseMemory(PNode Head);
+void outUseMemory(PNode Head, ofstream& file);
 
 /*void addEndList(string newId);
 string FindList(string fId);

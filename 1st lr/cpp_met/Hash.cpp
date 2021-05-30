@@ -49,7 +49,7 @@ void HashTable::outHashTable()
 	}
 }
 
-void HashTable::outUseMemory()
+void HashTable::outUseMemory(ofstream& file)
 {
 	int count = 0;
 	for (int i = 0; i < size; i++) 
@@ -63,6 +63,9 @@ void HashTable::outUseMemory()
 		}
 	}
 
-	cout << "Memory HashTable:" << endl;
-	cout << "Pointers + vector = " <<  8 * count  + sizeof  htable << " byte\n" << endl;
+	//cout << "Memory HashTable:" << endl;
+	//cout << "Pointers + vector = " <<  8 * count  + sizeof  htable << " byte\n" << endl;
+
+	file << "Memory HashTable:" << endl;
+	file << "Pointers + vector = " << 8 * count + sizeof  htable << " byte\n" << endl;
 }

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream> 
 #include "List.h"
 
 using namespace std;
@@ -13,7 +14,7 @@ public:
 	int hash(string id);
 	bool find(string id);
 	void outHashTable();
-	void outUseMemory();
+	void outUseMemory(ofstream& file);
 
 private:
 	vector<PNode> htable;

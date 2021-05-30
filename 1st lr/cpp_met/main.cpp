@@ -25,7 +25,8 @@ vector<string> readFileId()
         listId.push_back(temp);
         //cout << temp << endl;
     }     
-    cout << "Data = " << (sizeof listId + listId.capacity() * sizeof(char)*listId[0].size())  << "byte\n" <<endl;
+   // cout << "Data = " << (sizeof listId + listId.capacity() * sizeof(char)*listId[0].size())  << "byte\n" <<endl;
+    file.close();
     return listId;
 }
 
@@ -35,14 +36,20 @@ void main()
 {
     setlocale(LC_ALL, "rus");
 
+    ofstream resfile;
+    resfile.open("res.txt", ios::app);
+
     auto vlist = readFileId();
+    resfile << "---- N = " << vlist.size() << "; len = " << vlist[0].size() << "; ----" << endl;
+    resfile << "Data = " << (sizeof vlist + vlist.capacity() * sizeof(char) * vlist[0].size()) << "byte\n" << endl;
 
     ////--------------------LIST--------------------//
     clock_t start_time = clock();
     PNode list = CreateList(vlist);
     clock_t end_time = clock();
     double search_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << "Create_TimeList = " << search_time << endl;
+    //cout << "Create_TimeList = " << search_time << endl;
+    resfile << "Create_TimeList = " << search_time << endl;
 
     auto newidx = shuffle(vlist.size());
     double avg_time = 0;
@@ -55,17 +62,19 @@ void main()
         avg_time += search_time;
     }
     avg_time /= vlist.size();
-    cout << "AvgTime_FindList = " << avg_time << endl;
+    //cout << "AvgTime_FindList = " << avg_time << endl;
+    resfile << "AvgTime_FindList = " << avg_time << endl;
 
     //OutList(list);
-    outUseMemory(list);
+    outUseMemory(list, resfile);
     
     //--------------------TREE----------------------//
     start_time = clock();
     BinTree* tree = new BinTree(vlist);
     end_time = clock();
     search_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << "Create_TimeTree = " << search_time << endl;
+    //cout << "Create_TimeTree = " << search_time << endl;
+    resfile << "Create_TimeTree = " << search_time << endl;
 
     newidx = shuffle(vlist.size());
     avg_time = 0;
@@ -78,16 +87,18 @@ void main()
         avg_time += search_time;
     }
     avg_time /= vlist.size();
-    cout << "AvgTime_FindTree = " << avg_time << endl;
+    //cout << "AvgTime_FindTree = " << avg_time << endl;
+    resfile << "AvgTime_FindTree = " << avg_time << endl;
     //tree->outTree(tree->_head);
-    tree->outUseMemory();
+    tree->outUseMemory(resfile);
 
     ////--------------------HASH--------------------//
     start_time = clock();
     HashTable* hash = new HashTable(vlist);
     end_time = clock();
     search_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << "Create_TimeHashTable = " << search_time << endl;
+   // cout << "Create_TimeHashTable = " << search_time << endl;
+    resfile << "Create_TimeHashTable = " << search_time << endl;
 
     newidx = shuffle(vlist.size());
     avg_time = 0;
@@ -100,9 +111,11 @@ void main()
         avg_time += search_time;
     }
     avg_time /= vlist.size();
-    cout << "AvgTime_FindHashTable = " << avg_time << endl;
+    //cout << "AvgTime_FindHashTable = " << avg_time << endl;
+    resfile << "AvgTime_FindHashTable = " << avg_time << endl;
     // hash->outHashTable();
-    hash->outUseMemory();
+    hash->outUseMemory(resfile);
+    resfile.close();
 
 	return;
 }

@@ -117,9 +117,13 @@ void BinTree::helpBalance(int left, int right)
 	helpBalance(left, i - 1);
 }
 
-void BinTree::outUseMemory()
+void BinTree::outUseMemory(ofstream& file)
 {
-	cout << "Memory BinTree:" << endl;
-	cout << "Pointers = " << 8 *  _size * 2 << " byte" << endl;
-	cout << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int))  << " byte\n" << endl;
+	//cout << "Memory BinTree:" << endl;
+	//cout << "Pointers = " << 8 *  _size * 2 << " byte" << endl;
+	//cout << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int))  << " byte\n" << endl;
+
+	file << "Memory BinTree:" << endl;
+	file << "Pointers = " << 8 * _size * 2 << " byte" << endl;
+	file << "For the balance = " << (sizeof _idx + _idx.capacity() * sizeof(int)) << " byte\n" << endl;
 }
