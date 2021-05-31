@@ -3,6 +3,7 @@ from string import ascii_letters, digits
 from subprocess import call
 from os import remove
 import matplotlib.pyplot as plt
+import time
 
 def generate_random_ident(length, file):
     letters_and_digits = ascii_letters + digits
@@ -35,7 +36,10 @@ Create_TimeHashTable, AvgTime_FindHashTable, Memory_HashTable = [],[],[]
 exp_number = []
 
 experiment = int(input('Количество экспериментов: '))
+exp_start = time.time()
+print('Начало эксперимента: ', time.ctime(exp_start))
 for i in range(experiment):
+    print('Эксперимент №',i+1, time.ctime(time.time()))
     call('Lab_1.exe')
     exp_number.append(i+1)
 
@@ -62,8 +66,12 @@ for line in res:
         Memory_BinTree.append(float(line[25:(len(line)-1)]))
     if 'Memory_HashTable:Pointers_+_vector = ' in line:
         Memory_HashTable.append(float(line[36:(len(line)-1)]))
-    
 res.close
+
+exp_end = time.time()
+exp_time = exp_end - exp_start
+print('Конец эксперимента: ', time.ctime(exp_end))
+print('Время эксперимента: ', round(exp_time/60, 2), 'сек.')
 
 plt.title('Время создания структуры')
 plt.xlabel("Номер эксперимента")
